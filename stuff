@@ -1,0 +1,105 @@
+--Download MinGW Compiler https://sourceforge.net/projects/mingw/
+--C:\MinGW\bin to the System PATH
+--Download Sublime Text https://www.sublimetext.com/3
+
+--Build File//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+{
+    "shell_cmd": "g++ -std=c++17 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && \"${file_path}/${file_base_name}\"",
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "working_dir": "${file_path}",
+    "selector": "source.c++, source.cpp, source.cc, source.cxx",
+
+    "variants":
+    [
+        {
+            "name": "Run in Terminal",
+
+            "linux": {
+                "shell_cmd": "g++ -std=c++17 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && xterm -e '${file_path}/${file_base_name} && echo && echo Press ENTER to continue && read line && exit'",
+                // "shell_cmd": "g++ -std=c++11 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && gnome-terminal -e 'bash -c \"${file_path}/${file_base_name}&& echo && echo Press ENTER to continue && read line && exit\"'", // for gnome-terminal
+                // "shell_cmd": "g++ -std=c++11 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && xterm -e '${file_path}/${file_base_name}; bash'", // for xterm
+                // "shell_cmd": "g++ -std=c++11 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && xterm -hold -e ${file_path}/${file_base_name}", // for xterm
+                // "shell_cmd": "g++ -std=c++11 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && konsole --hold -e ${file_path}/./${file_base_name}", // for konsole
+
+            },
+
+            "windows":{
+                "shell_cmd":   "g++ -std=c++17 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && start cmd /k  $file_base_name "
+                // "shell_cmd":   "g++ -std=c++11 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && start \"$file_base_name\" call $file_base_name"
+            },
+
+            "osx":{
+                "shell_cmd": "g++ -std=c++17 -Wall \"${file}\" -o \"${file_path}/${file_base_name}\" && xterm -e '${file_path}/${file_base_name} && echo && echo Press ENTER to continue && read line && exit'",
+            },
+
+            "shell": true,
+        },
+    ]
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+--BracketHighlighter Setting
+//////////////////////////
+{
+  // Character threshold to search
+    "search_threshold": 1005000
+}
+//////////////////////////
+
+--Template:
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Rohit Rana
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std;
+using namespace __gnu_pbds;
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
+#define fio ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL);
+typedef long long ll;
+typedef long double ld;
+typedef int baby;
+//#define int long long//take care
+#define printclock cerr << "\n\n\nTime : " << 1000 * (ld)clock() / (ld)CLOCKS_PER_SEC << "ms\n";
+#define nl cout << "\n";
+#define pll pair<ll, ll>
+#define xINF 1000000000
+#define xmod 1000000007
+#define eb emplace_back
+#define pb push_back
+#define mkp make_pair
+#define xd(x) cout << #x << " = " << x << "\n";
+ld pi=3.141592653589793238;
+const ll INF = ll(1e18);
+ll mo(const ll input, const ll ceil)
+{
+  // apply the modulo operator only when needed
+  // (i.e. when the input is greater than the ceiling)
+  return input >= ceil ? input % ceil : input;
+  // NB: the assumption here is that the numbers are positive
+}
+
+void solve(int tt)
+{
+}
+
+signed main()
+{
+  fio
+    #ifndef ONLINE_JUDGE
+    //freopen("input.txt", "r", stdin);
+    //freopen("output.txt", "w", stdout);
+    #endif
+      int tt = 1;
+  //cin>>tt;
+  for (int i = 0; i < tt; i++)
+    solve(tt);
+  //system("pause");
+
+  printclock;
+  return 0;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
